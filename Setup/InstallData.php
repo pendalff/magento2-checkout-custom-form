@@ -97,28 +97,8 @@ class InstallData implements InstallDataInterface
         $quoteInstaller
             ->addAttribute(
                 'quote',
-                CustomFieldsInterface::CHECKOUT_BUYER_NAME,
+                CustomFieldsInterface::CHECKOUT_GA,
                 ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true]
-            )
-            ->addAttribute(
-                'quote',
-                CustomFieldsInterface::CHECKOUT_BUYER_EMAIL,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true]
-            )
-            ->addAttribute(
-                'quote',
-                CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true]
-            )
-            ->addAttribute(
-                'quote',
-                CustomFieldsInterface::CHECKOUT_GOODS_MARK,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true]
-            )
-            ->addAttribute(
-                'quote',
-                CustomFieldsInterface::CHECKOUT_COMMENT,
-                ['type' => Table::TYPE_TEXT, 'length' => '64k', 'nullable' => true]
             );
     }
 
@@ -138,28 +118,8 @@ class InstallData implements InstallDataInterface
         $salesInstaller
             ->addAttribute(
                 'order',
-                CustomFieldsInterface::CHECKOUT_BUYER_NAME,
+                CustomFieldsInterface::CHECKOUT_GA,
                 ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true, 'grid' => false]
-            )
-            ->addAttribute(
-                'order',
-                CustomFieldsInterface::CHECKOUT_BUYER_EMAIL,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true, 'grid' => false]
-            )
-            ->addAttribute(
-                'order',
-                CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true, 'grid' => false]
-            )
-            ->addAttribute(
-                'order',
-                CustomFieldsInterface::CHECKOUT_GOODS_MARK,
-                ['type' => Table::TYPE_TEXT, 'length' => '255', 'nullable' => true, 'grid' => false]
-            )
-            ->addAttribute(
-                'order',
-                CustomFieldsInterface::CHECKOUT_COMMENT,
-                ['type' => Table::TYPE_TEXT, 'length' => '64k', 'nullable' => true, 'grid' => false]
             );
     }
 }

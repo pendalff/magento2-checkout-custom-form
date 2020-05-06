@@ -84,24 +84,8 @@ class CustomFieldsRepository implements CustomFieldsRepositoryInterface
 
         try {
             $cart->setData(
-                CustomFieldsInterface::CHECKOUT_BUYER_NAME,
-                $customFields->getCheckoutBuyerName()
-            );
-            $cart->setData(
-                CustomFieldsInterface::CHECKOUT_BUYER_EMAIL,
-                $customFields->getCheckoutBuyerEmail()
-            );
-            $cart->setData(
-                CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO,
-                $customFields->getCheckoutPurchaseOrderNo()
-            );
-            $cart->setData(
-                CustomFieldsInterface::CHECKOUT_GOODS_MARK,
-                $customFields->getCheckoutGoodsMark()
-            );
-            $cart->setData(
-                CustomFieldsInterface::CHECKOUT_COMMENT,
-                $customFields->getCheckoutComment()
+                CustomFieldsInterface::CHECKOUT_GA,
+                $customFields->getCheckoutGaTrack()
             );
 
             $this->cartRepository->save($cart);

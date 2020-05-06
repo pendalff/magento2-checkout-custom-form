@@ -1,5 +1,5 @@
 {
-  "name": "sbodak/magento2-checkout-custom-form",
+  "name": "pendalff/magento2-checkout-custom-form",
   "description": "Add a custom form to Magento 2 checkout on the first step.",
   "license": [
     "MIT"
