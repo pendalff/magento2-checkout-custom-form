@@ -12,36 +12,9 @@ $customFields = $block->getOrderCustomFields();
         <div class="admin__page-section-content">
             <div class="order-information">
                 <div class="box">
-                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Buyer') ?></span></strong>
+                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('GA') ?></span></strong>
                     <div class="box-content">
-                        <?php echo $this->escapeHtml($customFields->getCheckoutBuyerName()); ?>
-                    </div>
-                </div>
-                <div class="box">
-                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Buyer email address') ?></span></strong>
-                    <div class="box-content">
-                        <?php echo $this->escapeHtml($customFields->getCheckoutBuyerEmail()); ?>
-                    </div>
-                </div>
-                <div class="box">
-                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Purchase order no.') ?></span></strong>
-                    <div class="box-content">
-                        <?php echo $this->escapeHtml($customFields->getCheckoutPurchaseOrderNo()); ?>
-                    </div>
-                </div>
-                <div class="box">
-                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Goods mark') ?></span></strong>
-                    <div class="box-content">
-                        <?php echo $this->escapeHtml($customFields->getCheckoutGoodsMark()); ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="order-information">
-                <div class="box">
-                    <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Comment') ?></span></strong>
-                    <div class="box-content">
-                        <?php echo nl2br($this->escapeHtml($customFields->getCheckoutComment())); ?>
+                        <?php echo $this->escapeHtml($customFields->getCheckoutGaTrack()); ?>
                     </div>
                 </div>
             </div>

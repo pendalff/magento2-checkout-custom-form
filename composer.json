@@ -1,12 +1,12 @@
 {
-  "name": "sbodak/magento2-checkout-custom-form",
+  "name": "pendalff/magento2-checkout-custom-form",
   "description": "Add a custom form to Magento 2 checkout on the first step.",
   "license": [
     "MIT"
   ],
   "type": "magento2-module",
   "keywords": ["magento2", "custom checkout"],
-  "version": "1.2.1",
+  "version": "2.0.0",
   "authors": [
     {
       "name": "Slawomir Bodak",

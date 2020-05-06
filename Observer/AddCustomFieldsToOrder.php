@@ -35,24 +35,8 @@ class AddCustomFieldsToOrder implements ObserverInterface
         $quote = $observer->getEvent()->getQuote();
 
         $order->setData(
-            CustomFieldsInterface::CHECKOUT_BUYER_NAME,
-            $quote->getData(CustomFieldsInterface::CHECKOUT_BUYER_NAME)
-        );
-        $order->setData(
-            CustomFieldsInterface::CHECKOUT_BUYER_EMAIL,
-            $quote->getData(CustomFieldsInterface::CHECKOUT_BUYER_EMAIL)
-        );
-        $order->setData(
-            CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO,
-            $quote->getData(CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO)
-        );
-        $order->setData(
-            CustomFieldsInterface::CHECKOUT_GOODS_MARK,
-            $quote->getData(CustomFieldsInterface::CHECKOUT_GOODS_MARK)
-        );
-        $order->setData(
-            CustomFieldsInterface::CHECKOUT_COMMENT,
-            $quote->getData(CustomFieldsInterface::CHECKOUT_COMMENT)
+            CustomFieldsInterface::CHECKOUT_GA,
+            $quote->getData(CustomFieldsInterface::CHECKOUT_GA)
         );
     }
 }
