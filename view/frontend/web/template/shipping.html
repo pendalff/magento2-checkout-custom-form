@@ -1,4 +1,135 @@
-<li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<style>
+
+    .checkout-shipping-method{
+        transition : opacity 0.5s;
+    }
+
+    .checkout-shipping-method.checkout-shipping-inactive {
+        height:0px;
+        overflow : hidden;
+        opacity : 0;
+    }
+
+    div[name="shippingAddress.postcode"] {
+        display : none;
+    }
+
+    div[name="shippingAddress.city"] {
+        display : none;
+    }
+    div[name="shippingAddress.street.0"],
+    div[name="shippingAddress.street.1"] {
+        display : none;
+    }
+
+    input[name="street[0]"] {
+        display : none;
+    }
+
+    #shipping-save-in-address-book {
+        display : none;
+    }
+
+    .fieldset>.field.choice .label[for=shipping-save-in-address-book], .fieldset>.fields>.field.choice .label[for=shipping-save-in-address-book] {
+        display : none;
+    }
+
+    #checkout-step-shipping .shipping-address-items {
+        display : none;
+    }
+
+    /* радиокнопки для этапа со списком методов доставки */
+
+    .table-checkout-shipping-method_table_borders input:checked ~ .radiobtn {
+        /*background-color: #2196F3;*/
+    }
+
+    .radiobtn {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        height: 28px;
+        width: 28px;
+        background-color: #eee;
+        border-radius: 50%;
+        border: 3px solid rgb(166,166,166);
+        background: #fff;
+    }
+
+    .radiobtn:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .table-checkout-shipping-method_table_borders input:checked ~ .radiobtn:after {
+        display: block;
+    }
+
+    .table-checkout-shipping-method_table_borders .radiobtn:after {
+        top: 3px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #2f9ee6;
+    }
+
+    .col.col-method input[type=radio] {
+        display : none;
+    }
+
+    .col-carrier p.col-carrier-inside-title {
+        margin: 0px;
+        padding: 0px;
+        line-height: 1;
+        font-size: 20px;
+    }
+
+    .col-carrier p.col-carrier-inside-notice {
+        color: #a6a6a6;
+    }
+
+    .col-carrier p {
+        text-transform: unset!important;
+    }
+
+    .col-carrier p {
+        margin: 0;
+    }
+
+    .col-carrier p.quantity {
+        font-size: 12px;
+    }
+
+    .table-checkout-shipping-method_table_borders .row .col.col-carrier.col-carrier-info {
+        text-transform: unset!important;
+        font-weight: 500!important;
+    }
+
+    a.col-carrier-inside-more {
+        margin-left: 12px;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .step-title.step-title-shipping, .payment-group .step-title {
+        margin-top: 0px!important;
+    }
+
+    .table-checkout-shipping-method_table_borders .row {
+        margin-right: -15px;
+        margin-left: 25px;
+    }
+</style>
+
+<li id="" class="checkout-shipping-address" data-bind="fadeVisible: visible()" style="list-style: none;">
     <div class="step-title" translate="'Shipping Address'" data-role="title" />
     <div id="checkout-step-shipping"
          class="step-content"
@@ -25,29 +156,30 @@
 
         <!-- Inline address form -->
         <render if="isFormInline" args="shippingFormTemplate" />
+
+        <div class="alt-button-continue">
+            <button type="submit" class="btn btn-primary alt-button-continue" onclick="sGoToShippingStep(); return false;">
+                <span>Продолжить</span>
+            </button>
+        </div>
     </div>
 </li>
 
 <!-- Custom form -->
-<li id="opc-custom-checkout-form"
+<li id="custom-checkout-form"
     data-bind="fadeVisible: visible()">
-    <div class="custom-checkout-form">
-        <div class="step-title"
-             translate="'Other information'"
-             data-role="title" />
         <!-- ko foreach: getRegion('custom-checkout-form') -->
         <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
-    </div>
 </li>
 
 <!--Shipping method template-->
 <li id="opc-shipping_method"
-    class="checkout-shipping-method"
+    class="checkout-shipping-method checkout-shipping-inactive"
     data-bind="fadeVisible: visible(), blockLoader: isLoading"
     role="presentation">
     <div class="checkout-shipping-method">
-        <div class="step-title"
+        <div class="step-title step-title-shipping"
              translate="'Shipping Methods'"
              data-role="title" />
 
@@ -76,8 +208,8 @@
                 </div>
                 <div class="actions-toolbar" id="shipping-method-buttons-container">
                     <div class="primary">
-                        <button data-role="opc-continue" type="submit" class="button action continue primary">
-                            <span translate="'Next'" />
+                        <button data-role="opc-continue" type="submit" class="btn btn-primary signup" onclick="sOnGoToNext()">
+                            <span translate="'Continue'" />
                         </button>
                     </div>
                 </div>

@@ -49,47 +49,42 @@ define([
          * Form submit handler
          */
         saveCustomFields: function() {
-            this.source.set('params.invalid', false);
-            this.source.trigger('customCheckoutForm.data.validate');
+            var formData = this.source.get('customCheckoutForm');
+            var quoteId = quote.getQuoteId();
+            var isCustomer = customer.isLoggedIn();
+            var url;
 
-            if (!this.source.get('params.invalid')) {
-                var formData = this.source.get('customCheckoutForm');
-                var quoteId = quote.getQuoteId();
-                var isCustomer = customer.isLoggedIn();
-                var url;
-
-                if (isCustomer) {
-                    url = urlBuilder.createUrl('/carts/mine/set-order-custom-fields', {});
-                } else {
-                    url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-custom-field', {cartId: quoteId});
-                }
-
-                var payload = {
-                    cartId: quoteId,
-                    customFields: formData
-                };
-                var result = true;
-                $.ajax({
-                    url: urlFormatter.build(url),
-                    data: JSON.stringify(payload),
-                    global: false,
-                    contentType: 'application/json',
-                    type: 'PUT',
-                    async: true
-                }).done(
-                    function (response) {
-                        cartCache.set('custom-form', formData);
-                        result = true;
-                    }
-                ).fail(
-                    function (response) {
-                        result = false;
-                        errorProcessor.process(response);
-                    }
-                );
-
-                return result;
+            if (isCustomer) {
+                url = urlBuilder.createUrl('/carts/mine/set-order-custom-fields', {});
+            } else {
+                url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-custom-field', {cartId: quoteId});
             }
+
+            var payload = {
+                cartId: quoteId,
+                customFields: formData
+            };
+            var result = true;
+            $.ajax({
+                url: urlFormatter.build(url),
+                data: JSON.stringify(payload),
+                global: false,
+                contentType: 'application/json',
+                type: 'PUT',
+                async: true
+            }).done(
+                function (response) {
+                    cartCache.set('custom-form', formData);
+                    result = true;
+                }
+            ).fail(
+                function (response) {
+                    result = false;
+                    errorProcessor.process(response);
+                }
+            );
+
+            return result;
         }
     });
 });
