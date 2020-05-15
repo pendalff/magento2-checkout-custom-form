@@ -34,7 +34,7 @@ define([
             this.customFields.subscribe(function(change){
                 self.formData(change);
             });
-
+console.log('init');
             return this;
         },
 
