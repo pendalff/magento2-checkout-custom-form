@@ -110,20 +110,8 @@ class CustomFieldsRepository implements CustomFieldsRepositoryInterface
             throw new NoSuchEntityException(__('Order %1 does not exist', $order));
         }
 
-        $this->customFields->setCheckoutBuyerName(
-            $order->getData(CustomFieldsInterface::CHECKOUT_BUYER_NAME)
-        );
-        $this->customFields->setCheckoutBuyerEmail(
-            $order->getData(CustomFieldsInterface::CHECKOUT_BUYER_EMAIL)
-        );
-        $this->customFields->setCheckoutPurchaseOrderNo(
-            $order->getData(CustomFieldsInterface::CHECKOUT_PURCHASE_ORDER_NO)
-        );
-        $this->customFields->setCheckoutGoodsMark(
-            $order->getData(CustomFieldsInterface::CHECKOUT_GOODS_MARK)
-        );
-        $this->customFields->setCheckoutComment(
-            $order->getData(CustomFieldsInterface::CHECKOUT_COMMENT)
+        $this->customFields->setCheckoutGaTrack(
+          $order->getData(CustomFieldsInterface::CHECKOUT_GA)
         );
 
         return $this->customFields;

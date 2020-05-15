@@ -38,6 +38,8 @@
                                                                                     </item>
                                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                                     <item name="dataScope" xsi:type="string">customCheckoutForm.checkout_ga_track</item>
+                                                                                    <item name="label" xsi:type="string">GA TRACK</item>
+                                                                                    <item name="sortOrder" xsi:type="string">1</item>
                                                                                 </item>
                                                                             </item>
                                                                         </item>
