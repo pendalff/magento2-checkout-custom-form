@@ -165,13 +165,6 @@
     </div>
 </li>
 
-<!-- Custom form -->
-<li id="custom-checkout-form">
-        <!-- ko foreach: getRegion('custom-checkout-form') -->
-        <!-- ko template: getTemplate() --><!-- /ko -->
-        <!--/ko-->
-</li>
-
 <!--Shipping method template-->
 <li id="opc-shipping_method"
     class="checkout-shipping-method checkout-shipping-inactive"
@@ -217,5 +210,11 @@
                  ifnot="rates().length > 0"
                  translate="'Sorry, no quotes are available for this order at this time'" />
         </div>
+    </div>
+    <!-- Custom form -->
+    <div id="custom-checkout-form">
+        <!-- ko foreach: getRegion('custom-checkout-form') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
     </div>
 </li>
